@@ -1,0 +1,39 @@
+---
+title: "GGplot Practice"
+author: "XinYu Zhang"
+date: "2023-11-08"
+output: html_document
+---
+
+
+Write an Rmarkdown script that again imports the height_data_clean.csv file.
+upload the dataset
+```{r}
+library(dplyr)
+library(lubridate)
+library(readr)
+library(ggplot2)
+#upload the dataset and simplify the survery-date for following plot
+data<-read.csv("C:/Users/XinYu Zhang/Downloads/height_data_clean.csv")
+
+
+```
+
+
+Make a plot that shows the trend line of height_cm over time, with a separate line for each population.
+```{r}
+ggplot(data, aes(x = `survey_date`, y = height_cm, group = pop, color = pop)) + geom_line() + geom_point(method="lm")
+```
+
+```{r}
+ggplot(data, aes(x = `survey_date`, y = height_cm, group = pop, color = pop)) + geom_line(color="black") + geom_point()+
+  facet_wrap(~ pop)
+```
+
+Now subset to keep only January 27, 2023. From this data make a boxplot that shows the data from each pop
+```{r}
+January_27_data<-filter(data,survey_date=="2023-01-27")
+January_27_data %>% ggplot(aes(x=pop, y=height_cm)) +
+  geom_boxplot()
+```
+
