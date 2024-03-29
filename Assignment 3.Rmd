@@ -1,0 +1,88 @@
+---
+title: "Assignment 3"
+author: "XinYu Zhang"
+date: "2023-11-01"
+output:
+  html_document: default
+  pdf_document: default
+---
+##Question 1
+
+Use sum() to determine the sum of numbers from 2000 to 20000. Provide your code and the actual sum in your answer.
+```{r}
+result<-sum(2000:20000)
+result
+#the sum from every number from 2000 to 20000
+a<-5
+b<-(2:20)
+a
+b
+#numerical number a = 5
+#numerical sequence from 2 to 20
+```
+
+##Question 2 In one or two sentences, describe what the above code snippet did.
+```{r}
+d<-"I just want to be deleted"
+d
+ls()
+#list the object "d"
+rm()
+#remove the object "d"
+```
+
+##Question 3 do you get different results? If so, why?
+```{r}
+result<-a+b
+result#numerical number a is added to every listed numerical number in "b" #(2+5) (3+5) (4+5)
+result<-sum(a+b)
+result#sum all the numerical number in object "a" and "b" #This sums up all the elements of the resulting vector from a + b #(2+5)+(3+5)+(4+5)...+(20+5) = 304
+
+```
+
+##Question 4  What is the sum of the 5th through 10th element of object b? Provide your code and the sum.
+```{r}
+result<-sum(b[5:10]) #5th through 10th element of object b
+result
+```
+
+##Question 5 What is the sum of the 3rd, 8th, and 10th element of b?
+
+```{r}
+result<-sum(b[c(3, 8, 10)])#c means combine c(values) numeric vector containing the values 3,8,10 to index "b" vector 
+result
+```
+
+##Question 6 When extracting from a 2-dimensional object, which number specifies rows and which specifies columns? What does m[3,] do? How can you extract the 3rd, 4th and 5th columns of m together as one object?
+
+```{r}
+m <- matrix(data=1:25,ncol=5,byrow=T)
+m
+m[5,5]
+#creating a 5*5 matrix,
+#the byrow argument determines how data is filled into the matrix.
+#the numbers are filled row-wise into the matrix because byrow was set to TRUE.
+#the first number inidcate the row, second number indicate the column
+#[m3,] means all elements in the 3rd row
+
+result<-m[ ,c(3,4,5)]
+#combine 3rd,4th,5th columns of m together.
+result
+
+```
+##Question 7What does the cbind command do? How about rbind? Create a new object “n” where the first row is a new row of numbers (your choice) and the following rows are the rows from matrix m. Optional: do the same but reverse the order of the rows from matrix m.
+```{r}
+result<-cbind(m,101:105)
+#You have a matrix m.
+#You also have a vector 101:105 that contains the numbers 101, 102, 103, 104, and 105.
+#Using the cbind() function, you are adding this vector as a new column to the right side of matrix m. The result is a new matrix.
+#cbind means column bind; rbind means row bind
+result
+
+n<-(50:54)
+result<-rbind(n,m)
+#row combine add a row
+result
+
+```
+
